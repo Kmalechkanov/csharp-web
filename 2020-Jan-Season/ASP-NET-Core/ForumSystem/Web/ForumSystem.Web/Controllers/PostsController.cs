@@ -56,6 +56,8 @@
             var post = AutoMapperConfig.MapperInstance.Map<Post>(input);
             if (!this.ModelState.IsValid)
             {
+                var categories = this.categoriesService.GetAll<CategoryDropDownViewModel>();
+                input.Categories = categories;
                 return this.View(input);
             }
 
